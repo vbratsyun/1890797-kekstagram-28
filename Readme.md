@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Виктория bratsyun](https://up.htmlacademy.ru/javascript/28/user/1890797).
-* Наставник: `Неизвестно`.
+- Студент: [Виктория bratsyun](https://up.htmlacademy.ru/javascript/28/user/1890797).
+- Наставник: `Александр Конотоп`.
 
 ---
 
