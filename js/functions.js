@@ -1,73 +1,59 @@
-// Функция для проверки длины строки
+//1. Функция для проверки длины строки
+/**
+ * Проверит проходит ли строка по длине
+ * @param {string} target
+ * @param {number} length
+ * @return {boolean}
+ */
+const fitsLength = (target, length) => target.length <= length;
+fitsLength('Вика учит JS', 12);
 
-function checkLengthofStr(str, length) {
-  return str.length <= length;
-}
-checkLengthofStr('Вика учит JS', 12);
+//2. Функция для проверки, является ли строка палиндромом
+/**
+ * Проверит является ли строка(или число) палиндромом
+ * @param {string|number} target
+ * @return {boolean}
+ */
+const isPalindrome = (target) => {
+  const normalized = String(target).replaceAll(' ', '').toLowerCase();
+  const reversed = normalized.split('').reverse().join('');
 
-/*второй вариант
-const checkLengthofStr = (str, length) => str.length <= length;
-checkLengthofStr('Вика учит JS', 12);*/
-
-//Функция для проверки, является ли строка палиндромом
-
-function isPalindrome(param) {
-  const str = param.toLowerCase().replaceAll(' ','').split('');
-  let flag = true;
-
-  for (let i = 0; i <= str.length - 1; i++) {
-    for (let j = str.length - 1 - i; j >= str.length - 1 - i; j--) {
-      if (str[i] !== str[j]) {
-        flag = false;
-      }
-    }
-  }
-  return flag !== false;
-}
+  return normalized === reversed;
+};
 
 isPalindrome('Лёша на полке клопа нашёл ');
 
-//Функция, которая принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого положительного числа.
+//3. Функция, которая принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого положительного числа.
+/**
+ * Извлечет из строки(или числа) цифры от 0 до 9
+ * @param {string|number} target
+ * @return {number}
+ */
+const parseDigits = (target) => {
+  const digits = String(target).replace(/[^0-9]/g, '');
 
-function getNum(param) {
-  const str = param.replaceAll(' ', '');
-  let num = '';
-  for (let i = 0; i <= str.length - 1; i++) {
-    if (+str[i] === Number(str[i])) {
-      num += str[i];
-    }
-  }
-  if (+num === 0) {
-    return NaN;
-  }
-  return Math.floor(num);
-}
-getNum('а я томат');
-
-/*второй вариант
-function getNum(param) {
-  const str = String(param);
-  let num = '';
-  for (let i = 0; i <= str.length - 1; i++) {
-    if (!Number.isNaN(parseInt(str[i]))) {
-      num += str[i];
-    }
-  }
-  return parseInt(num);
-}
-getNum();*/
-
-
-/*Функция, которая принимает три параметра: исходную строку, минимальную длину и строку с добавочными символами — и возвращает исходную строку, дополненную указанными символами до заданной длины. Символы добавляются в начало строки. Если исходная строка превышает заданную длину, она не должна обрезаться. Если «добивка» слишком длинная, она обрезается с конца.*/
-
-const myPadStart = (str, minLength, pad) => {
-  const actualPad = minLength - str.length;
-
-  if(actualPad <= 0) {
-    return str;
-  }
-
-  return pad.slice(0, actualPad % pad.length) + pad.repeat(actualPad / pad.length) + str;
+  return digits ? Number(digits) : NaN;
 };
 
-myPadStart('q', 4, 'we');
+parseDigits('а я томат');
+parseDigits(1.5);
+
+/*4. Функция, которая принимает три параметра: исходную строку, минимальную длину и строку с добавочными символами — и возвращает исходную строку, дополненную указанными символами до заданной длины. Символы добавляются в начало строки. Если исходная строка превышает заданную длину, она не должна обрезаться. Если «добивка» слишком длинная, она обрезается с конца.*/
+/**
+ * Добавит в начало строки символы другой строки.
+ * В результате исходная строка достигнет заданной длины
+ * @param {string} target
+ * @param {number} length
+ * @param {string} pad
+ * @return {string}
+ */
+
+
+const myPadStart = (target, length, pad) => {
+  const start = pad.repeat(length);
+
+  return `${start}${target}`.slice(-length);
+};
+
+myPadStart('1', 2, '0');
+
