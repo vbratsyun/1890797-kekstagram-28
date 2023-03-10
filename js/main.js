@@ -1,2 +1,2 @@
-import createImageStateList from './data.js';
-createImageStateList();
+import createPictureStateList from './data.js';
+createPictureStateList();
