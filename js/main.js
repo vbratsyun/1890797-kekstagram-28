@@ -1,2 +1,6 @@
 import createPictureStateList from './data.js';
-createPictureStateList();
+import initGallery from './gallery.js';
+
+initGallery(createPictureStateList());
+
+
