@@ -1,4 +1,5 @@
 import openPopup from './popup.js';
+import updatePreview from './upload-preview.js';
 
 /**
  * @type {HTMLFormElement}
@@ -37,12 +38,14 @@ const addDescriptionValidator = (message, validate) => {
 };
 
 /**
- * @param {Event} event
+ * @param {Event & {target: HTMLInputElement}} event
  */
 const onFormChange = (event) => {
 
   if(event.target === form.filename) {
-    //TODO изображение
+    const data = event.target.files.item(0);
+
+    updatePreview(data);
     openPopup(popup);
   }
 };
