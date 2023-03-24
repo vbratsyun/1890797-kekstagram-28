@@ -101,8 +101,6 @@ const onScaleControlClick = (event) => {
   const [less, input, more] = scaleControl.querySelectorAll('input, button');
   const value = Number.parseFloat(input.getAttribute('value'));
 
-  console.log(value);
-
   switch (event.target) {
     case less:
       setScale(Math.max(value - Scale.STEP, Scale.MIN));
@@ -132,7 +130,7 @@ const onEffectSliderUpdate = () => {
  */
 const updatePreview = (data) => {
   //TODO подстановка изображения
-  void data
+  void data;
   setScale(Scale.MAX);
   setEffect(Effect.NONE);
 
