@@ -1,22 +1,14 @@
 /**
- * @template Item
- * @param {Item[]} list
- * @return {Item}
+ * @param {string} url
+ * @param {RequestInit} [options]
+ * @return {Promise}
  */
-export const pickItemFromList = (list) => {
-  const index = Math.floor(Math.random() * list.length);
+export const request = async (url, options) => {
+  const response = await fetch(url, options);
 
-  return list[index];
+  if (!response.ok) {
+    throw new Error(`${response.status}. ${response.statusText}`);
+  }
+
+  return response.json();
 };
-
-/**
- * @param {number} min
- * @param {number} max
- * @return {number}
- */
-export const pickIntegerInRange = (min, max) => {
-  const value = min + Math.random() * (max - min);
-
-  return Math.round(value);
-};
-
