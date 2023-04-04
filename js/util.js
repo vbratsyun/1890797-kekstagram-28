@@ -15,22 +15,22 @@ export const request = async (url, options) => {
 
 /**
  * @param {(...args: any) => any} callback
- * @param {number} [daley]
+ * @param {number} [delay]
  * @return {(...args: any) => any}
  */
-export const debounce = (callback, daley = 500) => {
+export const debounce = (callback, delay = 500) => {
   let timeoutId;
   let lastCallTime;
 
   return (...rest) => {
     const elapsedTime = Date.now() - lastCallTime;
-    const newDaley = Math.max(daley - elapsedTime, 0);
+    const newDelay = Math.max(delay - elapsedTime, 0);
 
     clearTimeout(timeoutId);
 
     timeoutId = setTimeout(() => {
       callback(...rest);
       lastCallTime = Date.now();
-    }, newDaley);
+    }, newDelay);
   };
 };
