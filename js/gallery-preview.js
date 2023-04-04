@@ -1,5 +1,5 @@
 /**
- @param {HTMLElement} preview
+ @type {HTMLElement} preview
  */
 const preview = document.querySelector('.big-picture__preview');
 
