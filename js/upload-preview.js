@@ -78,6 +78,17 @@ const effectSlider = noUiSlider.create(
 );
 
 /**
+ * @param {string} url
+ */
+const setPicture = (url) => {
+  picture.setAttribute('src', url);
+
+  effectPicker.querySelectorAll('span').forEach((span) => {
+    span.style.setProperty('background-image', `url(${url})`);
+  });
+};
+
+/**
  * @param {number} percent
  */
 const setScale = (percent) => {
@@ -112,7 +123,7 @@ const onScaleControlClick = (event) => {
 };
 
 /**
- * @param {Event & {target: Element}}
+ * @param {Event & {target: Element}} event
  */
 const onEffectPickerChange = (event) => {
   const name = event.target.getAttribute('value');
@@ -129,13 +140,13 @@ const onEffectSliderUpdate = () => {
  * @param {File} data
  */
 const updatePreview = (data) => {
-  //TODO подстановка изображения
-  void data;
+  setPicture(URL.createObjectURL(data));
   setScale(Scale.MAX);
   setEffect(Effect.NONE);
 
   scaleControl.addEventListener('click', onScaleControlClick);
   effectPicker.addEventListener('change', onEffectPickerChange);
   effectSlider.on('update', onEffectSliderUpdate);
+
 };
 export default updatePreview;
